@@ -7,8 +7,8 @@ public:
       while(low <= high){
         int sum = 0;
         int mid = low + (high - low)/2;
-        for(int num : nums){
-          sum += ceil((float)num/mid);
+        for(float num : nums){
+          sum += ceil(num/mid);
         }
         if(sum <= threshold){
             res = mid;
