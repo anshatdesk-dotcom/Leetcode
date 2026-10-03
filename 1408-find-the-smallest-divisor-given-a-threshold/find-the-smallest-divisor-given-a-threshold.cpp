@@ -5,7 +5,7 @@ public:
       int low {1} , high =  *max_element(nums.begin() , nums.end());
       while(low <= high){
         int sum = 0;
-        int mid = low + (high - low)/2;
+        float mid = low + (high - low)/2;
         for(float num : nums){
           sum += ceil(num/mid);
         }
