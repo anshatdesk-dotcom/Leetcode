@@ -16,6 +16,9 @@ public:
             if (checkVal == num) {
                 checkVal++;
             } else {
+                if(missingNums.size() + num - checkVal >= k){
+                    return checkVal + (k - missingNums.size()) - 1;
+                }
                 addVals(missingNums, checkVal, num);
                 if (missingNums.size() >= k) {
                     return missingNums[k - 1];
