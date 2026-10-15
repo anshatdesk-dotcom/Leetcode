@@ -3,7 +3,6 @@ public:
     void addVals(vector<int>& arr, int start, int end) {
        
         for (; start < end; start++) {
-            cout << start << " ";
             arr.push_back(start);
         }
         return;
