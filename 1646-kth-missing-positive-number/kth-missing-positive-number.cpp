@@ -1,30 +1,46 @@
 class Solution {
 public:
-    void addVals(vector<int>& arr, int start, int end) {
+    // void addVals(vector<int>& arr, int start, int end) {
        
-        for (; start < end; start++) {
-            arr.push_back(start);
-        }
-        return;
-    }
+    //     for (; start < end; start++) {
+    //         arr.push_back(start);
+    //     }
+    //     return;
+    // }
     int findKthPositive(vector<int>& arr, int k) {
-        vector<int> missingNums;
-        int checkVal{1};
+    int low = 0;
+    int high = arr.size() -1 ;
 
-        for (auto num : arr) {
-            if (checkVal == num) {
-                checkVal++;
-            } else {
-                if(missingNums.size() + num - checkVal >= k){
-                    return checkVal + (k - missingNums.size()) - 1;
-                }
-                addVals(missingNums, checkVal, num);
-                if (missingNums.size() >= k) {
-                    return missingNums[k - 1];
-                }
-                checkVal = num +1;
-            }
+    while(low <= high){
+        int mid = low +(high - low)/2;
+        int missingNums = arr[mid] - mid - 1;
+        // cout << arr[mid] << " " << missingNums << endl;
+        if(missingNums < k){
+            low = mid +1;
+        }else{
+            high = mid -1;
         }
-        return arr.back() + (k - missingNums.size());
+        // cout << arr[high];
+    }
+       return k + high + 1 ;
+    
+        // vector<int> missingNums;
+        // int checkVal{1};
+
+        // for (auto num : arr) {
+        //     if (checkVal == num) {
+        //         checkVal++;
+        //     } else {
+        //         if(missingNums.size() + num - checkVal >= k){
+        //             return checkVal + (k - missingNums.size()) - 1;
+        //         }
+        //         addVals(missingNums, checkVal, num);
+        //         if (missingNums.size() >= k) {
+        //             return missingNums[k - 1];
+        //         }
+        //         checkVal = num +1;
+        //     }
+        // }
+        // return arr.back() + (k - missingNums.size());
     }
 };
